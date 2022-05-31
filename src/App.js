@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import logo from './logo.svg';
 import { Counter } from './features/counter/Counter';
 import './App.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {getSerieApi} from './Pages/Home/store/homeActions'
 
 
@@ -13,6 +13,8 @@ function App() {
   useEffect(() => {
     dispatch(getSerieApi());
   },[]);
+
+  console.log(useSelector((state) => state.home.movie));
 
   return (
     <div className="App">

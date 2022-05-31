@@ -1,12 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export const GET_MOVIE = 'GET_MOVIE'
-const SET_MOVIE = 'SET_MOVIE';
-
 const initialState = {
     movie: [{}],
     film: [{}], //  <-- ci lavorero dopo aver impostato l'ui
-    status: 'idle'
+    status: 'idle',
+    isLoading: false
 };
 
 export const homeSlice = createSlice({
@@ -14,28 +12,19 @@ export const homeSlice = createSlice({
     initialState,
 
     reducers: {
-        getMovies: (state) => {
-            type: GET_MOVIE;
+        getMovies: (state, action) => {
+            state.movie = action.payload;
         } ,
-        setMovies: (state) => {
-            type: SET_MOVIE;
-            movie: state.movie;
-            trySetMovie(state.movie);
-        },
+        setLoading(state){
+            state.isLoading ? true : false;
+        }
+
     }
 });
 
 export const { getMovies, setMovies } = homeSlice.actions;
 
 export const trySetMovie = (state = initialState, action) => {
-    switch (action.type) {
-        case 'SET_MOVIE':
-            const [{ movie }] = action;
-            return [{...state, movie}];
-            console.log(movie);
-        default:
-            return state;
-    }
 }
 
 export default homeSlice.reducer;
