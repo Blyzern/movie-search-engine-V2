@@ -1,18 +1,18 @@
+import * as actions from './homeActions';
 import {
     takeLatest,
-    call,
     put,
     all,
+    select,
   } from 'redux-saga/effects';
- import { setMovies, GET_MOVIE } from './homeSlice';
+ import { setMovies } from './homeSlice';
   import { fetchWrapper } from '../../../utils/FetchWrapper';
 
-export function* getSerie() {
-    const endPoint = 'Serie';
-    console.log("madonna puttana");
+
+function* getSerie() {
+    const endPoint = '/Serie';
     try {
-      const response = yield call(fetchWrapper(endPoint, 'GET'));
-      const [{data}]  = response;
+      const { data } = yield fetchWrapper(endPoint, 'get');
       console.log(data);
       yield put(setMovies(data));
     } catch (error) {
@@ -21,8 +21,7 @@ export function* getSerie() {
 }
 
 export default function* root() {
-  console.log("Dio can viene chiamato");
   yield all([
-    takeLatest(GET_MOVIE, getSerie())
+    takeLatest(actions.getSerieApi.type, getSerie)
   ]);
 }
