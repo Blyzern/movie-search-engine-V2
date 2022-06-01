@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export function fetchWrapper(endpoint, method) {
+export function fetchMovies(endpoint, method) {
   
   return axios.request({
     method: method,

@@ -3,19 +3,20 @@ import {
     takeLatest,
     put,
     all,
+    call
   } from 'redux-saga/effects';
  import { getMovies } from './homeSlice';
-import { fetchWrapper } from '../../../utils/FetchWrapper';
+import { fetchMovies } from '../../../utils/FetchWrapper';
 
 
 
 function* getSerie() {
   const endPoint = '/Serie';
   try {
-    const { data } = yield fetchWrapper(endPoint, 'get');
+    const { data } = yield call(fetchMovies, endPoint, 'get');
     yield put(getMovies( data ));
   } catch (error) {
-    yield put({type: "ADD_SERIE_FAILED", message: error.message});
+    console.log(error);
   }
 }
 

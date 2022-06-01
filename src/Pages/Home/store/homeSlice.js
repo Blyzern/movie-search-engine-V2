@@ -14,7 +14,7 @@ export const homeSlice = createSlice({
     reducers: {
         getMovies: (state, action) => {
             state.movie = action.payload;
-        } ,
+        },
         setLoading(state){
             state.isLoading ? true : false;
         }
