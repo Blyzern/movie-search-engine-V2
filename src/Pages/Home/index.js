@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getSerieApi } from "./store/homeActions";
+import {setLoading} from "./store/homeSlice";
 import { Body } from "../../components/Body/Body";
 import { NavBar } from "../../components/NavBar/NavBar";
 import { PageContainer, BannerContainer, Banner } from "../../components/PageContainer/PageContainer";
@@ -15,7 +15,7 @@ export function Home() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-      dispatch(getSerieApi());
+      dispatch(setLoading());
     },[]);
   
     const Serie = useSelector((state) => state.home.movie);

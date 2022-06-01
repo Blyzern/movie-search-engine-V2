@@ -1,4 +1,3 @@
-import * as actions from './homeActions';
 import {
     takeLatest,
     put,
@@ -22,6 +21,6 @@ function* getSerie() {
 
 export default function* root() {
   yield all([
-    takeLatest(actions.getSerieApi.type, getSerie)
+    takeLatest('home/setLoading', getSerie)
   ]);
 }

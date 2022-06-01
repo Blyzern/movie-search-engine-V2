@@ -14,15 +14,16 @@ export const homeSlice = createSlice({
     reducers: {
         getMovies: (state, action) => {
             state.movie = action.payload;
+            state.isLoading = false;
         },
         setLoading(state){
-            state.isLoading ? true : false;
+            state.isLoading = true;
         }
 
     }
 });
 
-export const { getMovies, setMovies } = homeSlice.actions;
+export const { getMovies, setLoading } = homeSlice.actions;
 
 export const trySetMovie = (state = initialState, action) => {
 }
