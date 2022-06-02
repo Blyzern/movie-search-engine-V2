@@ -1,5 +1,5 @@
 import React from "react";
-import { Nav, Nav2, ProfileImg, Logo, NavContainer} from "./styled";
+import { Nav, Nav2, ProfileImg, Logo, NavContainer} from "./styles";
 import {PageLink} from "../PageLink";
 
 export const NavBar = () => {

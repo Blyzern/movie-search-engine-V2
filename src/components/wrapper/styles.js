@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Body = styled.div`
+export const Wrapper = styled.div`
     position: absolute;
     background-color: #141414;
     height: 100%;

@@ -12,21 +12,18 @@ export const homeSlice = createSlice({
     initialState,
 
     reducers: {
-        getMovies: (state, action) => {
+        getMovies: () => {},
+        setMovies: (state, action) => {
             state.movie = action.payload;
-            state.isLoading = false;
         },
-        setLoading(state){
-            state.isLoading = true;
-        }
+        setLoading: (state, action) =>{
+            state.isLoading = action.payload;
+        },
 
     }
 });
 
-export const { getMovies, setLoading } = homeSlice.actions;
-
-export const trySetMovie = (state = initialState, action) => {
-}
+export const { getMovies, setMovies, setLoading } = homeSlice.actions;
 
 export default homeSlice.reducer;
 
