@@ -11,7 +11,7 @@ function redirect(path) {
     return  window.location.href = path;
 }
 
-export function Home() {
+export const Home = () => {
     const series = useSelector((state) => state.home.movie);
     const dispatch = useDispatch();
 
