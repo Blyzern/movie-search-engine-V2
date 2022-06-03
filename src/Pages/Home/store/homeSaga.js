@@ -10,11 +10,11 @@ import { fetchMovies } from '../../../utils/FetchWrapper';
 
 
 function* getSerie() {
-  const endPoint = '/Serie';
+  const endPoint = '/trending/tv/week';
   try {
     yield put(setLoading(true));
     const { data } = yield call(fetchMovies, endPoint, 'get');
-    yield put(setMovies(data));
+    yield put(setMovies(data.results));
     yield put(setLoading(false));
   } catch (error) {
     console.log(error);

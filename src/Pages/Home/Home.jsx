@@ -18,7 +18,6 @@ export const Home = () => {
     useEffect(() => {
       dispatch(getMovies());
     },[]);
-  
     return (
         <Wrapper>
             <NavBar />
@@ -26,13 +25,14 @@ export const Home = () => {
                 <BannerContainer>
                     <Title>ORIGINALI NETFLIX</Title>
                 <Banner>
-                    {series.map(serie => <FilmCover src={serie.Copertina} key={serie.id} onClick={() => redirect(serie.link)}/>)}
+                    {series.map(serie => <FilmCover src={process.env.REACT_APP_IMG_URL + serie.poster_path} key={serie.id} onClick={() => redirect(serie.link)}/>)}
+                   
                 </Banner>
                 </BannerContainer>
                 <BannerContainer>
                 <Title>SERIE TV</Title>
                 <Banner>
-                    {series.map(serie => <FilmCover src={serie.Copertina} key={serie.id} onClick={() => redirect(serie.link)}/>)}
+                    {series.map(serie => <FilmCover src={process.env.REACT_APP_IMG_URL + serie.poster_path} key={serie.id} onClick={() => redirect(serie.link)}/>)}
                 </Banner>
                 </BannerContainer>
             </PageContainer>
