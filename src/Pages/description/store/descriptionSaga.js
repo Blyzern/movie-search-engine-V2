@@ -1,15 +1,8 @@
-import {
-    takeLatest,
-    put,
-    all,
-    call
-  } from 'redux-saga/effects';
- import { getMovies, setSeries, setLoading, setMovies } from './homeSlice';
+import { takeLatest, put, all, call } from 'redux-saga/effects';
 import { fetchMovies } from '../../../utils/FetchWrapper';
+import { getMovieDetails } from './descriptionSlice';
 
-
-
-function* getSerie() {
+function* getSerie({ movieId }) {
   const endPoint = '/trending/tv/week';
   const endPoint2 = '/trending/movie/week';
   try {
@@ -25,7 +18,5 @@ function* getSerie() {
 }
 
 export default function* root() {
-  yield all([
-    takeLatest(getMovies.type, getSerie)
-  ]);
+  yield all([takeLatest(getMovieDetails.type, getSerie)]);
 }
