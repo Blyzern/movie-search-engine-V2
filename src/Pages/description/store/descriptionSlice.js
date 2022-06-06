@@ -22,11 +22,18 @@ export const descriptionSlice = createSlice({
     setMovieId: (state, action) => {
       state.movieId = action.payload;
     },
+    setData: (state, action) => {
+      state.title = action.payload.title;
+      state.overview = action.payload.overview;
+      state.adult = action.payload.adult;
+      state.image = action.payload.poster_path;
+      state.release_date = action.payload.release_date;
+    },
     getMovieDetails: () => {},
   },
 });
 
-export const { setLoading, setMovieId, getMovieDetails } =
+export const { setLoading, setMovieId, getMovieDetails, setData } =
   descriptionSlice.actions;
 
 export default descriptionSlice.reducer;

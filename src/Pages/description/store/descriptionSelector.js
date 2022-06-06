@@ -1,1 +1,1 @@
-const dataSelector = (state) => state.data;
+

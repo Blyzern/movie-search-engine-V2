@@ -1,22 +1,22 @@
 import { takeLatest, put, all, call } from 'redux-saga/effects';
 import { fetchMovies } from '../../../utils/FetchWrapper';
 import { getMovieDetails } from './descriptionSlice';
+import { setData } from './descriptionSlice';
 
-function* getSerie({ movieId }) {
-  const endPoint = '/trending/tv/week';
-  const endPoint2 = '/trending/movie/week';
+function* getDetails({ payload }) {
+  const endPoint = `/movie/${payload}`;
   try {
-    yield put(setLoading(true));
-    const { data } = yield call(fetchMovies, endPoint, 'get');
-    yield put(setSeries(data.results));
-    const newData = yield call(fetchMovies, endPoint2, 'get');
-    yield put(setMovies(newData.data.results));
-    yield put(setLoading(false));
+    const { data } = yield call(fetchMovies, endPoint);
+    console.log(
+      '🚀 ~ file: descriptionSaga.js ~ line 10 ~ function*getDetails ~ data',
+      data
+    );
+    yield put(setData(data));
   } catch (error) {
     console.log(error);
   }
 }
 
-export default function* root() {
-  yield all([takeLatest(getMovieDetails.type, getSerie)]);
+export default function* detailsRoot() {
+  yield all([takeLatest(getMovieDetails.type, getDetails)]);
 }

@@ -28,34 +28,31 @@ export const Home = () => {
     dispatch(getMovies());
   }, []);
   return (
-    <Wrapper>
-      <NavBar />
-      <PageContainer>
-        <BannerContainer>
-          <Title>TOP WEEKLY FILMS</Title>
-          <Banner>
-            {films.map(({ id, poster_path }) => (
-              <FilmCover
-                src={baseUrlImg + poster_path}
-                key={id}
-                onClick={() => goTo(id)}
-              />
-            ))}
-          </Banner>
-        </BannerContainer>
-        <BannerContainer>
-          <Title>SERIE TV</Title>
-          <Banner>
-            {series.map((serie, index) => (
-              <FilmCover
-                src={baseUrlImg + serie.poster_path}
-                key={index}
-                onClick={() => goTo(id)}
-              />
-            ))}
-          </Banner>
-        </BannerContainer>
-      </PageContainer>
-    </Wrapper>
+    <PageContainer>
+      <BannerContainer>
+        <Title>TOP WEEKLY FILMS</Title>
+        <Banner>
+          {films.map(({ id, poster_path }) => (
+            <FilmCover
+              src={baseUrlImg + poster_path}
+              key={id}
+              onClick={() => goTo(id)}
+            />
+          ))}
+        </Banner>
+      </BannerContainer>
+      <BannerContainer>
+        <Title>SERIE TV</Title>
+        <Banner>
+          {series.map(({ id, poster_path }) => (
+            <FilmCover
+              src={baseUrlImg + poster_path}
+              key={id}
+              onClick={() => goTo(id)}
+            />
+          ))}
+        </Banner>
+      </BannerContainer>
+    </PageContainer>
   );
 };
