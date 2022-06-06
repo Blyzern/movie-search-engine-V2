@@ -1,7 +1,7 @@
 import { takeLatest, put, all, call } from 'redux-saga/effects';
 import { fetchMovies } from '../../../utils/FetchWrapper';
-import { getMovieDetails } from './descriptionSlice';
-import { setData } from './descriptionSlice';
+import { getMovieDetails } from './detailsSlice';
+import { setData } from './detailsSlice';
 
 function* getDetails({ payload }) {
   const endPoint = `/movie/${payload}`;

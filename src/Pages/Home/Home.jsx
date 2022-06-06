@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getMovies } from './store/homeSlice';
-import { Wrapper } from '../../components/Wrapper/styles';
-import { NavBar } from '../../components/NavBar/NavBar';
 import {
   PageContainer,
   BannerContainer,
@@ -11,7 +9,7 @@ import {
 import { FilmCover } from '../../components/FilmCover/FilmCover';
 import { Title } from '../../components/Title/Title';
 import { push } from 'redux-first-history';
-import { setMovieId } from '../description/store/descriptionSlice';
+import { setMovieId } from '../details/store/detailsSlice';
 
 const baseUrlImg = process.env.REACT_APP_IMG_URL;
 

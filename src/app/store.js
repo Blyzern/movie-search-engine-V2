@@ -4,7 +4,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { createReduxHistoryContext } from 'redux-first-history';
 import counterReducer from '../features/counter/counterSlice';
 import homeReducer from '../Pages/Home/store/homeSlice';
-import descriptionReducer from '../Pages/description/store/descriptionSlice';
+import descriptionReducer from '../Pages/details/store/detailsSlice';
 import createSagaMiddleware from 'redux-saga';
 import rootSaga from './rootSaga';
 
