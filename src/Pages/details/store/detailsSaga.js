@@ -1,10 +1,16 @@
-import { takeLatest, put, all, call } from 'redux-saga/effects';
+import { useSelector } from 'react-redux';
+import { takeLatest, put, all, call, select } from 'redux-saga/effects';
 import { fetchMovies } from '../../../utils/FetchWrapper';
 import { getMovieDetails } from './detailsSlice';
 import { setData, setLoading } from './detailsSlice';
+import { isSerieSelector } from './detailsSelector';
 
 function* getDetails({ payload }) {
-  const endPoint = `/movie/${payload}`;
+  let endPoint;
+  const isSerie = yield select(isSerieSelector);
+  isSerie === true
+    ? (endPoint = `/tv/${payload}`)
+    : (endPoint = `/movie/${payload}`);
   try {
     setLoading(true);
     const { data } = yield call(fetchMovies, endPoint);

@@ -8,7 +8,7 @@ export const Details = () => {
   const movieId = useSelector((state) => state.description.movieId);
   const isLoading = useSelector((state) => state.description.isLoading);
 
-  const { title, poster_path, overview, genres } = useSelector(
+  const { title, name, poster_path, overview, genres } = useSelector(
     (state) => state.description.data
   );
   const dispatch = useDispatch();
@@ -19,7 +19,7 @@ export const Details = () => {
   return (
     <DetailsPage
       key={movieId}
-      title={title}
+      title={title || name}
       image={poster_path}
       overview={overview}
       genre={genres}

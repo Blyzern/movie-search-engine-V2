@@ -9,7 +9,7 @@ import {
 import { FilmCover } from '../../components/FilmCover/FilmCover';
 import { Title } from '../../components/Title/Title';
 import { push } from 'redux-first-history';
-import { setMovieId } from '../details/store/detailsSlice';
+import { setIsSerie, setMovieId } from '../details/store/detailsSlice';
 import { fetchPoster } from '../../utils/FetchPoster';
 
 export const Home = () => {
@@ -20,6 +20,11 @@ export const Home = () => {
   const goTo = (id) => {
     dispatch(setMovieId(id));
     dispatch(push(`/movie/${id}`));
+  };
+  const goToSerie = (id) => {
+    dispatch(setMovieId(id));
+    dispatch(setIsSerie(true));
+    dispatch(push(`/serie/${id}`));
   };
   useEffect(() => {
     dispatch(getMovies());
@@ -33,7 +38,7 @@ export const Home = () => {
             <FilmCover
               src={fetchPoster(poster_path)}
               key={id}
-              onClick={() => goTo(id)}
+              onClick={() => goToSerie(id)}
             />
           ))}
         </Banner>

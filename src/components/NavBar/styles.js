@@ -9,13 +9,16 @@ export const NavContainer = styled.header`
   justify-content: space-between;
   text-align: center;
   width: 100%;
-  height: auto;
+  height: 4.1 rem;
   @media (max-width: 460px) {
     overflow: hidden;
     overflow-x: scroll;
     ::-webkit-scrollbar {
       width: 0px;
     }
+  }
+  @media (min-width: 768px) {
+    height: 70px;
   }
 `;
 
@@ -34,6 +37,9 @@ export const Nav2 = styled.nav`
 export const ProfileImg = styled.img`
   margin-left: 1rem;
   width: 3rem;
+  @media (max-width: 460px) {
+    width: 0;
+  }
 `;
 
 export const Logo = styled.img`

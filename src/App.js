@@ -15,6 +15,7 @@ function App() {
         <Route path="/" element={<Register />} />
         <Route path="home" element={<Home />} />
         <Route path="movie/:movieid" element={<Details />} />
+        <Route path="serie/:movieid" element={<Details />} />
       </Routes>
     </Wrapper>
   );

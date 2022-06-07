@@ -20,7 +20,7 @@ export const BannerContainer = styled.div`
 `;
 
 export const Banner = styled.div`
-  width: 100vw;
+  width: 100%;
   display: flex;
   margin-left: 1.8rem;
   margin-right: 1.8rem;
