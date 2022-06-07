@@ -1,12 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  title: '',
-  overview: '',
-  adult: false,
-  image: '',
   data: {},
-  release_date: '',
   isLoading: false,
   movieId: null,
 };
@@ -23,11 +18,7 @@ export const descriptionSlice = createSlice({
       state.movieId = action.payload;
     },
     setData: (state, action) => {
-      state.title = action.payload.title;
-      state.overview = action.payload.overview;
-      state.adult = action.payload.adult;
-      state.image = action.payload.poster_path;
-      state.release_date = action.payload.release_date;
+      state.data = action.payload;
     },
     getMovieDetails: () => {},
   },
