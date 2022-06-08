@@ -1,10 +1,24 @@
 import React from 'react';
-import { Bubble } from './styles';
+import { CustomButton } from './styles';
 
-const bubbleSort = async (arr) => {
-  return arr;
+//bubble sorting
+const bubbleSort = (arr) => {
+  let newArr = [...arr];
+  newArr.map((ary) => {
+    newArr.map((num, i) => {
+      if (newArr[i + 1] !== undefined) {
+        if (newArr[i].vote_average < newArr[i + 1].vote_average) {
+          [newArr[i + 1], newArr[i]] = [newArr[i], newArr[i + 1]];
+        }
+      }
+    });
+  });
+  console.log(newArr);
+  return newArr;
 };
 
 export const TopRatePage = ({ data }) => {
-  return <Bubble onClick={() => bubbleSort(data)}>Bubble Sort</Bubble>;
+  return (
+    <CustomButton onClick={() => bubbleSort(data)}>Bubble Sort</CustomButton>
+  );
 };
