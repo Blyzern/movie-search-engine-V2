@@ -11,12 +11,10 @@ export const NavBar = () => {
           alt="Netflix logo"
         />
         <PageLink linkRef="/Home" content="Home Page" />
-        <PageLink linkRef="/serieTv" content="Serie Tv" />
-        <PageLink linkRef="/Film" content="Film" />
+        <PageLink linkRef="/TopRated" content="Top Rated Films" />
       </Nav>
       <Nav2>
-        <PageLink linkRef="/" content="Login" />
-        <PageLink linkRef="/register" content="Register" />
+        <PageLink linkRef="/" content="Register" />
         <ProfileImg
           src="https://www.workforcesolutionsalamo.org/wp-content/uploads/2021/04/board-member-missing-image.png"
           alt="Profile Img"

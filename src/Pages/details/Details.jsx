@@ -8,9 +8,17 @@ export const Details = () => {
   const movieId = useSelector((state) => state.description.movieId);
   const isLoading = useSelector((state) => state.description.isLoading);
 
-  const { title, name, poster_path, overview, genres } = useSelector(
-    (state) => state.description.data
-  );
+  const {
+    title,
+    name,
+    poster_path,
+    overview,
+    genres,
+    number_of_episodes,
+    number_of_seasons,
+    runtime,
+    vote_average,
+  } = useSelector((state) => state.description.data);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getMovieDetails(movieId));
@@ -23,6 +31,10 @@ export const Details = () => {
       image={poster_path}
       overview={overview}
       genre={genres}
+      numberOfEpisodes={number_of_episodes}
+      numberOfSeasons={number_of_seasons}
+      runtime={runtime}
+      voteAverage={vote_average}
     />
   );
 };

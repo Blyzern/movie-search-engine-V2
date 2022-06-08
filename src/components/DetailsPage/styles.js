@@ -17,7 +17,8 @@ export const Title = styled.h1`
   margin-top: 1rem;
   color: white;
   @media (max-width: ${smartPhone}px) {
-    font-size: 2rem;
+    text-align: center;
+    font-size: 2.3rem;
   }
 `;
 
@@ -34,6 +35,20 @@ export const Poster = styled.img`
     align-self: center;
     width: 12rem;
     height: auto;
+  }
+`;
+export const Riproduce = styled.button`
+  background-color: red;
+  color: white;
+  font-size: 1.5rem;
+  border: none;
+  border-radius: 5px;
+  align-self: center;
+  cursor: pointer;
+  width: 15rem;
+  height: 3rem;
+  :hover {
+    background-color: darkred;
   }
 `;
 
@@ -53,13 +68,6 @@ export const DetailsWrapper = styled.div`
   @media (max-width: ${smartPhone}px) {
     flex-direction: column;
     flex-wrap: wrap;
-  }
-`;
-export const Genre = styled.span`
-  color: white;
-  font-size: 1.5rem;
-  @media (max-width: ${smartPhone}px) {
-    font-size: 1.5rem;
   }
 `;
 

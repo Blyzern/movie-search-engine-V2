@@ -5,12 +5,21 @@ import {
   Title,
   DetailsWrapper,
   Info,
-  Genre,
   Index,
   InfoWrapper,
+  Riproduce,
 } from './styles';
 import { fetchPoster } from '../../utils/FetchPoster';
-export const DetailsPage = ({ title, image, overview, genre = [] }) => {
+export const DetailsPage = ({
+  title,
+  image,
+  overview,
+  genre = [],
+  numberOfEpisodes,
+  numberOfSeasons,
+  runtime,
+  voteAverage,
+}) => {
   return (
     <PageWrapper>
       {<Title>{title || 'no title'}</Title>}
@@ -18,19 +27,41 @@ export const DetailsPage = ({ title, image, overview, genre = [] }) => {
         {<Poster src={fetchPoster(image) || 'none'} alt="Film Poster" />}
         <InfoWrapper>
           {
-            <Genre>
+            <Info>
               <Index>Genres: </Index>
               {genre.map(
                 ({ name }, index) =>
                   name + (index != genre.length - 1 ? ', ' : '. ')
               ) || 'No genres'}
-            </Genre>
+            </Info>
+          }
+          {numberOfEpisodes !== undefined ? (
+            <Info>
+              <Index>Number of Episodes: </Index> {numberOfEpisodes}
+            </Info>
+          ) : null}
+          {numberOfSeasons !== undefined ? (
+            <Info>
+              <Index>Number of Seasons: </Index>
+              {numberOfSeasons}
+            </Info>
+          ) : null}
+          {runtime !== undefined ? (
+            <Info>
+              <Index>Runtime: </Index> {runtime} minutes
+            </Info>
+          ) : null}
+          {
+            <Info>
+              <Index>Vote Average: </Index> {voteAverage}
+            </Info>
           }
           {
             <Info>
               <Index>INFO:</Index> {overview || 'No info'}
             </Info>
           }
+          <Riproduce>Riproduce</Riproduce>
         </InfoWrapper>
       </DetailsWrapper>
     </PageWrapper>
