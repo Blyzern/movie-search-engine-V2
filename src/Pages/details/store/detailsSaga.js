@@ -1,4 +1,3 @@
-import { useSelector } from 'react-redux';
 import { takeLatest, put, all, call, select } from 'redux-saga/effects';
 import { fetchMovies } from '../../../utils/FetchWrapper';
 import { getMovieDetails } from './detailsSlice';

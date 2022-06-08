@@ -11,7 +11,7 @@ export const NavBar = () => {
           alt="Netflix logo"
         />
         <PageLink linkRef="/Home" content="Home Page" />
-        <PageLink linkRef="/TopRated" content="Top Rated Films" />
+        <PageLink linkRef="/TopRatedFilms" content="Top Rated Films" />
       </Nav>
       <Nav2>
         <PageLink linkRef="/" content="Register" />

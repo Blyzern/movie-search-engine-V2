@@ -2,9 +2,9 @@ import { combineReducers } from 'redux';
 import { createBrowserHistory } from 'history';
 import { configureStore } from '@reduxjs/toolkit';
 import { createReduxHistoryContext } from 'redux-first-history';
-import counterReducer from '../features/counter/counterSlice';
 import homeReducer from '../Pages/Home/store/homeSlice';
 import descriptionReducer from '../Pages/details/store/detailsSlice';
+import topRatedReducer from '../Pages/topRatedFilms/store/topRatedSlice';
 import createSagaMiddleware from 'redux-saga';
 import rootSaga from './rootSaga';
 
@@ -15,9 +15,9 @@ const sagaMiddleware = createSagaMiddleware();
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
     home: homeReducer,
     description: descriptionReducer,
+    topRated: topRatedReducer,
     router: routerReducer,
   },
   middleware: (getDefaultMiddleware) =>

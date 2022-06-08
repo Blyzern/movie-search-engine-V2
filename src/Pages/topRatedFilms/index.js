@@ -1,1 +1,1 @@
-export * from 'TopRatedFilms';
+export * from './TopRatedFilms';

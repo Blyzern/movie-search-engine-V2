@@ -11,9 +11,13 @@ export const topRatedSlice = createSlice({
 
   reducers: {
     getMovieData: () => {},
+
+    setMoviesData: (state, action) => {
+      state.data = action.payload;
+    },
   },
 });
 
-export const { getMovieData } = topRatedSlice.actions;
+export const { getMovieData, setMoviesData } = topRatedSlice.actions;
 
 export default topRatedSlice.reducer;
