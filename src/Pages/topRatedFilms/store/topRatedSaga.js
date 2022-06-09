@@ -6,10 +6,6 @@ function* getFilms() {
   const endPoint = `/trending/movie/week`;
   try {
     const { data } = yield call(fetchMovies, endPoint, 'GET');
-    console.log(
-      '🚀 ~ file: topRatedSaga.js ~ line 9 ~ function*getFilms ~ data',
-      data.results
-    );
     yield put(setMoviesData(data.results));
   } catch (error) {
     console.log(error);
