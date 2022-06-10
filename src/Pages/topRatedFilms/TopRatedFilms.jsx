@@ -9,5 +9,5 @@ export const TopRatedFilms = () => {
   useEffect(() => {
     dispatch(getMovieData());
   }, []);
-  return <TopRatePage data={films} />;
+  return <TopRatePage data={films} /> || '';
 };

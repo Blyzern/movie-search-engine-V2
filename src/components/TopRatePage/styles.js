@@ -34,6 +34,12 @@ export const Dropdown = styled.select`
     border: 1px solid #c2c2c2;
   }
 `;
+export const DropdownOption = styled.option`
+  width: 150px;
+  height: 50px;
+  border-radius: 5px;
+  border: 1px solid #c2c2c2;
+`;
 
 export const PageWrapper = styled.div`
   display: flex;
@@ -52,12 +58,20 @@ export const FilmsWrapper = styled.div`
   margin-top: 1rem;
   margin-bottom: 1rem;
 `;
+export const FilmCard = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+`;
 export const Poster = styled.img`
   width: 200px;
   margin: 1rem;
   height: auto;
 `;
 export const Vote = styled.p`
-  color: red;
-  width: 1.5rem;
+  color: white;
+  font-weight: bold;
+  width: 2rem;
+  text-align: center;
 `;

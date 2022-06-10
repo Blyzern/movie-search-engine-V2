@@ -6,7 +6,6 @@ import { DetailsPage } from '../../components/DetailsPage';
 
 export const Details = () => {
   const movieId = useSelector((state) => state.description.movieId);
-  const isLoading = useSelector((state) => state.description.isLoading);
 
   const {
     title,

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useEffect } from 'react';
 import {
   PageWrapper,
   DropdownWrapper,
@@ -6,6 +7,8 @@ import {
   Poster,
   FilmsWrapper,
   Vote,
+  FilmCard,
+  DropdownOption,
 } from './styles';
 
 //bubble sorting
@@ -36,23 +39,25 @@ const insertionSort = (arr) => {
 };
 
 const selectionSort = (arr) => {
-  arr.map((ary, i, min) => {
+  const arrCopy = [...arr];
+  arrCopy.map((ary, i, min) => {
     (min = i),
-      arr.map((e, j = i + 1) => {
-        if (arr[j].vote_average < arr[min].vote_average) {
+      arrCopy.map((e, j = i + 1) => {
+        if (arrCopy[j].vote_average < arrCopy[min].vote_average) {
           min = j;
         }
         if (min != i) {
-          let temp = arr[i];
-          arr[i] = arr[min];
-          arr[min] = temp;
+          let temp = arrCopy[i];
+          arrCopy[i] = arrCopy[min];
+          arrCopy[min] = temp;
         }
       });
   });
-  return arr;
+  return arrCopy;
 };
 
 const quickSort = (arr) => {
+  const arrCopy = [...arr];
   const partition = (array = [], start, end) => {
     const pivotValue = array[end].vote_average;
     let pivotIndex = start;
@@ -70,11 +75,11 @@ const quickSort = (arr) => {
   };
   let stack = [];
   stack.push(0);
-  stack.push(arr.length - 1);
+  stack.push(arrCopy.length - 1);
   while (stack[stack.length - 1] >= 0) {
     let end = stack.pop();
     let start = stack.pop();
-    let pivotIndex = partition(arr, start, end);
+    let pivotIndex = partition(arrCopy, start, end);
 
     if (pivotIndex - 1 > start) {
       stack.push(start);
@@ -86,17 +91,19 @@ const quickSort = (arr) => {
       stack.push(end);
     }
   }
-  console.log(arr);
-  return arr;
+  return arrCopy;
 };
 
 export const TopRatePage = ({ data }) => {
-  const [select, setSelect] = useState('');
   const [films, setFilms] = useState([]);
+
   const baseImgUrl = 'https://image.tmdb.org/t/p/w500';
 
+  useEffect(() => {
+    setFilms(data);
+  }, [data]);
+
   const changeHandler = (value, arrData) => {
-    setSelect(value);
     switch (value) {
       case 'Select Sort':
         return setFilms(arrData);
@@ -116,16 +123,33 @@ export const TopRatePage = ({ data }) => {
     <PageWrapper>
       <DropdownWrapper>
         <Dropdown onChange={(e) => changeHandler(e.target.value, data)}>
-          <option defaultValue="Select Sort">Select Sort</option>
-          <option value="bubbleSort">Bubble Sort</option>
-          <option value="insertionSort">Insertion Sort</option>
-          <option value="selectionSort">Selection Sort</option>
-          <option value="quickSort">Quick Sort</option>
+          <DropdownOption defaultValue="Select Sort" key="default">
+            Select Sort
+          </DropdownOption>
+          <DropdownOption value="bubbleSort" key="bubbleSort">
+            Bubble Sort
+          </DropdownOption>
+          <DropdownOption value="insertionSort" key="insertionSort">
+            Insertion Sort
+          </DropdownOption>
+          <DropdownOption value="selectionSort" key="selectionSort">
+            Selection Sort
+          </DropdownOption>
+          <DropdownOption value="quickSort" key="quickSort">
+            Quick Sort
+          </DropdownOption>
         </Dropdown>
       </DropdownWrapper>
       <FilmsWrapper>
         {films.map(({ poster_path, id, vote_average }) => (
-          <Poster src={baseImgUrl + poster_path} key={id}></Poster>
+          <FilmCard key={id}>
+            <Poster
+              src={poster_path !== undefined ? baseImgUrl + poster_path : ''}
+              key={id}
+              alt="Poster"
+            ></Poster>
+            <Vote key={id + ' movie'}>Vote: {vote_average}</Vote>
+          </FilmCard>
         ))}
       </FilmsWrapper>
     </PageWrapper>
