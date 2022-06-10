@@ -56,6 +56,36 @@ const selectionSort = (arr) => {
   return arrCopy;
 };
 
+const merge = (left, right) => {
+  let sortedArr = []; // the sorted elements will go here
+
+  while (left.length && right.length) {
+    // insert the smallest element to the sortedArr
+    if (left[0].vote_average > right[0].vote_average) {
+      sortedArr.push(left.shift());
+    } else {
+      sortedArr.push(right.shift());
+    }
+  }
+
+  // use spread operator and create a new array, combining the three arrays
+  return [...sortedArr, ...left, ...right];
+};
+
+const mergeSort = (arr) => {
+  const arrCopy = [...arr];
+  const half = arrCopy.length / 2;
+
+  // the base case is array length <=1
+  if (arrCopy.length <= 1) {
+    return arrCopy;
+  }
+
+  const left = arrCopy.splice(0, half); // the first half of the array
+  const right = arrCopy;
+  return merge(mergeSort(left), mergeSort(right));
+};
+
 const quickSort = (arr) => {
   const arrCopy = [...arr];
   const partition = (array = [], start, end) => {
@@ -63,13 +93,10 @@ const quickSort = (arr) => {
     let pivotIndex = start;
     for (let i = start; i < end; i++) {
       if (array[i].vote_average > pivotValue) {
-        // Swapping elements
         [array[i], array[pivotIndex]] = [array[pivotIndex], array[i]];
-        // Moving to next element
         pivotIndex++;
       }
     }
-
     [array[pivotIndex], array[end]] = [array[end], array[pivotIndex]];
     return pivotIndex;
   };
@@ -113,6 +140,8 @@ export const TopRatePage = ({ data }) => {
         return setFilms(insertionSort(arrData));
       case 'selectionSort':
         return setFilms(selectionSort(arrData));
+      case 'mergeSort':
+        return setFilms(mergeSort(arrData));
       case 'quickSort':
         return setFilms(quickSort(arrData));
       default:
@@ -134,6 +163,9 @@ export const TopRatePage = ({ data }) => {
           </DropdownOption>
           <DropdownOption value="selectionSort" key="selectionSort">
             Selection Sort
+          </DropdownOption>
+          <DropdownOption value="mergeSort" key="mergeSort">
+            Merge Sort
           </DropdownOption>
           <DropdownOption value="quickSort" key="quickSort">
             Quick Sort

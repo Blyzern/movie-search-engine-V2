@@ -57,6 +57,10 @@ export const FilmsWrapper = styled.div`
   flex-wrap: wrap;
   margin-top: 1rem;
   margin-bottom: 1rem;
+  @media (max-width: 460px) {
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
 `;
 export const FilmCard = styled.div`
   display: flex;
