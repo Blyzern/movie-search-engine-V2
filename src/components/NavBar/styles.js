@@ -34,6 +34,12 @@ export const Nav2 = styled.nav`
   height: 100%;
 `;
 
+export const Lens = styled.img`
+  width: 2.5rem;
+  height: auto;
+  cursor: pointer;
+`;
+
 export const ProfileImg = styled.img`
   margin-left: 1rem;
   width: 3rem;
