@@ -54,6 +54,7 @@ export const FilmsWrapper = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
+  justify-content: space-around;
   flex-wrap: wrap;
   margin-top: 1rem;
   margin-bottom: 1rem;
