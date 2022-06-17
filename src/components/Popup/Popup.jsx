@@ -22,25 +22,41 @@ const linearSearch = (arr, input) => {
   });
 };
 
-const binarySearch = (arr, input) => {};
+const binarySearch = (arr, x) => {
+  let l = 0;
+  let r = arr.length - 1;
+  let mid;
+
+  while (l <= r) {
+    mid = l + Math.floor((r - l) / 2);
+
+    if (arr[mid] == x) {
+      return arr[mid].title;
+    }
+    if (x > arr[mid]) {
+      l = mid + 1;
+    } else {
+      r = mid - 1;
+    }
+  }
+  return -1;
+};
 
 export const Popup = ({ handle }) => {
   const [data, setData] = useState([]);
-
-  const fetchData = async (e) => {
-    e.preventDefault();
-    const response = await get();
-  };
-
-  useEffect(() => {}, []);
-
   return (
     <PopupWrapper>
       <PopupBox>
         <CloseButton onClick={handle}>X</CloseButton>
         <SearchForm>
           <InputWrapper>
-            <Radio type="radio" name="radio" value="Linear Search" checked />
+            <Radio
+              type="radio"
+              name="radio"
+              value="Linear Search"
+              onChange={() => linearSearch(arr)}
+              checked
+            />
             <Label>Linear Search</Label>
           </InputWrapper>
           <InputWrapper>
