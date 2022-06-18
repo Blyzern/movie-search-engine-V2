@@ -4,7 +4,7 @@ const initialState = {
   data: {},
   isSerie: false,
   isLoading: false,
-  movieId: null,
+  movieId: '',
 };
 
 export const descriptionSlice = createSlice({

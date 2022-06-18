@@ -12,6 +12,7 @@ function App() {
   return (
     <Wrapper>
       <NavBar />
+      {/* prelevop un valore dal selettore se il valore è true faccio il display dell errore al click della x lo stesso valore deve diventare false*/}
       <Routes>
         <Route path="/" element={<Register />} />
         <Route path="home" element={<Home />} />

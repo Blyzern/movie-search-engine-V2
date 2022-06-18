@@ -10,6 +10,7 @@ import {
   Riproduce,
 } from './styles';
 import { fetchPoster } from '../../utils/FetchPoster';
+
 export const DetailsPage = ({
   title,
   image,
@@ -31,36 +32,34 @@ export const DetailsPage = ({
               <Index>Genres: </Index>
               {genre.map(
                 ({ name }, index) =>
-                  name + (index != genre.length - 1 ? ', ' : '. ')
+                  name + (index !== genre.length - 1 ? ', ' : '. ')
               ) || 'No genres'}
             </Info>
           }
-          {numberOfEpisodes !== undefined ? (
+          {numberOfEpisodes !== undefined && (
             <Info>
               <Index>Number of Episodes: </Index> {numberOfEpisodes}
             </Info>
-          ) : null}
-          {numberOfSeasons !== undefined ? (
+          )}
+          {numberOfSeasons !== undefined && (
             <Info>
               <Index>Number of Seasons: </Index>
               {numberOfSeasons}
             </Info>
-          ) : null}
-          {runtime !== undefined ? (
+          )}
+          {runtime !== undefined && (
             <Info>
               <Index>Runtime: </Index> {runtime} minutes
             </Info>
-          ) : null}
-          {
-            <Info>
-              <Index>Vote Average: </Index> {voteAverage}
-            </Info>
-          }
-          {
-            <Info>
-              <Index>INFO:</Index> {overview || 'No info'}
-            </Info>
-          }
+          )}
+          <Info>
+            <Index>Vote Average: </Index> {voteAverage}
+          </Info>
+
+          <Info>
+            <Index>INFO:</Index> {overview || 'No info'}
+          </Info>
+
           <Riproduce>Riproduce</Riproduce>
         </InfoWrapper>
       </DetailsWrapper>
