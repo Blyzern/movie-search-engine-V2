@@ -15,13 +15,18 @@ import {
 const bubbleSort = (arr) => {
   const arrCopy = [...arr];
   arrCopy.map((ary) => {
+    let swapped = true;
     arrCopy.map((e, i) => {
       if (arrCopy[i + 1] !== undefined) {
         if (arrCopy[i].vote_average < arrCopy[i + 1].vote_average) {
           [arrCopy[i + 1], arrCopy[i]] = [arrCopy[i], arrCopy[i + 1]];
+          swapped = false;
         }
       }
     });
+    if (swapped) {
+      return arrCopy;
+    }
   });
   return arrCopy;
 };
@@ -89,14 +94,18 @@ const mergeSort = (arr) => {
 const quickSort = (arr) => {
   const arrCopy = [...arr];
   const partition = (array = [], start, end) => {
+    let i = start;
     const pivotValue = array[end].vote_average;
     let pivotIndex = start;
-    for (let i = start; i < end; i++) {
+
+    while (i < end) {
       if (array[i].vote_average > pivotValue) {
         [array[i], array[pivotIndex]] = [array[pivotIndex], array[i]];
         pivotIndex++;
       }
+      i++;
     }
+
     [array[pivotIndex], array[end]] = [array[end], array[pivotIndex]];
     return pivotIndex;
   };
