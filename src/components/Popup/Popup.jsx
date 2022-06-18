@@ -54,13 +54,18 @@ export const Popup = ({ handle }) => {
               type="radio"
               name="radio"
               value="Linear Search"
-              onChange={() => linearSearch(arr)}
-              checked
+              onChange={() => linearSearch(data)}
+              defaultChecked
             />
             <Label>Linear Search</Label>
           </InputWrapper>
           <InputWrapper>
-            <Radio type="radio" name="radio" value="Binary Search" />
+            <Radio
+              type="radio"
+              name="radio"
+              value="Binary Search"
+              onChange={() => binarySearch(data)}
+            />
             <Label>Binary Search</Label>
           </InputWrapper>
           <InputWrapper>

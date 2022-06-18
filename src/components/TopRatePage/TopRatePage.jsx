@@ -46,17 +46,17 @@ const insertionSort = (arr) => {
 const selectionSort = (arr) => {
   const arrCopy = [...arr];
   arrCopy.map((ary, i, min) => {
-    (min = i),
-      arrCopy.map((e, j = i + 1) => {
-        if (arrCopy[j].vote_average < arrCopy[min].vote_average) {
-          min = j;
-        }
-        if (min != i) {
-          let temp = arrCopy[i];
-          arrCopy[i] = arrCopy[min];
-          arrCopy[min] = temp;
-        }
-      });
+    min = i;
+    arrCopy.map((e, j = i + 1) => {
+      if (arrCopy[j].vote_average < arrCopy[min].vote_average) {
+        min = j;
+      }
+      if (min != i) {
+        let temp = arrCopy[i];
+        arrCopy[i] = arrCopy[min];
+        arrCopy[min] = temp;
+      }
+    });
   });
   return arrCopy;
 };
@@ -65,15 +65,12 @@ const merge = (left, right) => {
   let sortedArr = []; // the sorted elements will go here
 
   while (left.length && right.length) {
-    // insert the smallest element to the sortedArr
     if (left[0].vote_average > right[0].vote_average) {
       sortedArr.push(left.shift());
     } else {
       sortedArr.push(right.shift());
     }
   }
-
-  // use spread operator and create a new array, combining the three arrays
   return [...sortedArr, ...left, ...right];
 };
 
@@ -81,12 +78,11 @@ const mergeSort = (arr) => {
   const arrCopy = [...arr];
   const half = arrCopy.length / 2;
 
-  // the base case is array length <=1
   if (arrCopy.length <= 1) {
     return arrCopy;
   }
 
-  const left = arrCopy.splice(0, half); // the first half of the array
+  const left = arrCopy.splice(0, half);
   const right = arrCopy;
   return merge(mergeSort(left), mergeSort(right));
 };
