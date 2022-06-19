@@ -1,5 +1,16 @@
 import styled from 'styled-components';
 
+const smartPhone = 360;
+
+export const LoaderContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
 export const PageContainer = styled.div`
   margin-top: 4rem;
   flex-direction: column;
@@ -30,5 +41,26 @@ export const Banner = styled.div`
   overflow-x: scroll;
   ::-webkit-scrollbar {
     width: 0px;
+  }
+`;
+
+export const Title = styled.h1`
+  color: white;
+  font-size: 2rem;
+  padding-left: 1.5rem;
+  font-weight: bold;
+  font-family: Bebas Neue;
+  @media (max-width: ${smartPhone}px) {
+    font-size: 1.3rem;
+  }
+`;
+
+export const FilmCover = styled.img`
+  width: 10rem;
+  cursor: pointer;
+  height: auto;
+  margin-right: 0.3rem;
+  @media (max-width: ${smartPhone}px) {
+    width: 11.7 rem;
   }
 `;

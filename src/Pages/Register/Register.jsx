@@ -7,8 +7,8 @@ import {
   RegisterWrapper,
   RegisterSubmit,
   ErrorMessage,
-} from '../../components/RegisterComponents/styles';
-import { Title } from '../../components/Title/Title';
+  Title,
+} from './styles';
 
 // watch can be used to rerender only when you are changing a value like Email or password ex. watch('Email')
 export const Register = () => {

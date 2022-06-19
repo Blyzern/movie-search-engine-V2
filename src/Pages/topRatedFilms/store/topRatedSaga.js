@@ -1,12 +1,14 @@
 import { takeLatest, put, all, call, select } from 'redux-saga/effects';
 import { fetchMovies } from '../../../utils/FetchWrapper';
-import { getMovieData, setMoviesData } from './topRatedSlice';
+import { getMovieData, setMoviesData, setLoading } from './topRatedSlice';
 
 function* getFilms() {
   const endPoint = `/trending/movie/week`;
   try {
+    yield put(setLoading(true));
     const { data } = yield call(fetchMovies, endPoint, 'GET');
     yield put(setMoviesData(data.results));
+    yield put(setLoading(false));
   } catch (error) {
     console.log(error);
   }

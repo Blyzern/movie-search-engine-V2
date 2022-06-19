@@ -10,5 +10,6 @@ export const Link = styled.a`
   }
   @media (max-width: 360px) {
     font-size: 1.3rem;
+    font-weight: bold;
   }
 `;

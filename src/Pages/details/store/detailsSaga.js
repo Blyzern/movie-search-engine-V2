@@ -2,7 +2,7 @@ import { takeLatest, put, all, call, select } from 'redux-saga/effects';
 import { fetchMovies } from '../../../utils/FetchWrapper';
 import { getMovieDetails } from './detailsSlice';
 import { setData, setLoading } from './detailsSlice';
-import { isSerieSelector } from './detailsSelector';
+import { isSerieSelector, isLoadingSelector } from './detailsSelector';
 
 function* getDetails({ payload }) {
   let endPoint;
@@ -11,10 +11,10 @@ function* getDetails({ payload }) {
     ? (endPoint = `/tv/${payload}`)
     : (endPoint = `/movie/${payload}`);
   try {
-    setLoading(true);
+    yield put(setLoading(true));
     const { data } = yield call(fetchMovies, endPoint);
     yield put(setData(data));
-    setLoading(false);
+    yield put(setLoading(false));
   } catch (error) {
     console.log(error);
   }

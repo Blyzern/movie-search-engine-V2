@@ -1,20 +1,26 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getMovies } from './store/homeSlice';
+
 import {
+  Title,
+  FilmCover,
   PageContainer,
   BannerContainer,
   Banner,
-} from '../../components/PageContainer/PageContainer';
-import { FilmCover } from '../../components/FilmCover/FilmCover';
-import { Title } from '../../components/Title/Title';
+  LoaderContainer,
+} from './styles';
+
 import { push } from 'redux-first-history';
 import { setIsSerie, setMovieId } from '../details/store/detailsSlice';
 import { fetchPoster } from '../../utils/FetchPoster';
+import { loadingSelector } from './store/homeSelectors';
+import PulseLoader from 'react-spinners/PulseLoader';
 
 export const Home = () => {
   const series = useSelector((state) => state.home.series);
   const films = useSelector((state) => state.home.films);
+  const isLoading = useSelector(loadingSelector);
   const dispatch = useDispatch();
 
   const goTo = (id) => {
@@ -29,7 +35,12 @@ export const Home = () => {
   useEffect(() => {
     dispatch(getMovies());
   }, []);
-  return (
+  return isLoading ? (
+    <LoaderContainer>
+      <Title>Loading...</Title>
+      <PulseLoader loading={isLoading} color="red" size={25} />
+    </LoaderContainer>
+  ) : (
     <PageContainer>
       <BannerContainer>
         <Title>SERIE TV</Title>

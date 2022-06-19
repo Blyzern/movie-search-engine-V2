@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+const smartPhone = 360;
+
 export const RegisterWrapper = styled.div`
   position: absolute;
   width: 100%;
@@ -56,4 +58,15 @@ export const RegisterText = styled.input`
 export const ErrorMessage = styled.p`
   color: red;
   font-size: 1.5rem;
+`;
+
+export const Title = styled.h1`
+  color: white;
+  font-size: 2rem;
+  padding-left: 1.5rem;
+  font-weight: bold;
+  font-family: Bebas Neue;
+  @media (max-width: ${smartPhone}px) {
+    font-size: 1.3rem;
+  }
 `;
