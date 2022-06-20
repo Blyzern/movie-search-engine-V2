@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getMovies } from './store/homeSlice';
+import { isEmpty } from 'lodash';
 
 import {
   Title,
@@ -25,6 +26,7 @@ export const Home = () => {
 
   const goTo = (id) => {
     dispatch(setMovieId(id));
+    dispatch(setIsSerie(false));
     dispatch(push(`/movie/${id}`));
   };
   const goToSerie = (id) => {
@@ -47,7 +49,7 @@ export const Home = () => {
         <Banner>
           {series.map(({ id, poster_path }) => (
             <FilmCover
-              src={fetchPoster(poster_path)}
+              src={(!isEmpty(poster_path) && fetchPoster(poster_path)) || null}
               key={id}
               onClick={() => goToSerie(id)}
             />
@@ -59,7 +61,7 @@ export const Home = () => {
         <Banner>
           {films.map(({ id, poster_path }) => (
             <FilmCover
-              src={fetchPoster(poster_path)}
+              src={(!isEmpty(poster_path) && fetchPoster(poster_path)) || null}
               key={id}
               onClick={() => goTo(id)}
             />

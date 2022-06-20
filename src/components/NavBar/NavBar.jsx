@@ -3,6 +3,7 @@ import { Nav, Nav2, ProfileImg, Logo, NavContainer, Lens } from './styles';
 import { Popup } from '../Popup';
 import { PageLink } from '../PageLink';
 import { useEffect } from 'react';
+import SvgLens from '../../Images/Lens';
 
 export const NavBar = () => {
   const [showPopup, setShowPopup] = useState(false);
@@ -24,10 +25,12 @@ export const NavBar = () => {
         <PageLink linkRef="/TopRatedFilms" content="Top Rated" />
       </Nav>
       <Nav2>
-        <Lens
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_Id0WPIw6m-tQYT1E_xaPA6TmMBJnAUVQmw&usqp=CAU"
+        <SvgLens
+          fill="white"
+          width="50"
+          height="50"
           onClick={() => handlePopup(true)}
-        ></Lens>
+        />
         {showPopup && <Popup handle={handlePopup} />}
         <PageLink linkRef="/" content="Register" />
         <ProfileImg

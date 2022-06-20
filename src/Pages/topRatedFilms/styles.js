@@ -40,6 +40,7 @@ export const DropdownWrapper = styled.div`
   justify-content: space-around;
 `;
 export const Dropdown = styled.select`
+  margin-bottom: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -69,7 +70,7 @@ export const PageWrapper = styled.div`
   margin-top: 4rem;
   margin-bottom: 4rem;
   width: 100%;
-  height: 100%;
+  height: fit-content;
 `;
 export const FilmsWrapper = styled.div`
   width: 100%;
@@ -94,6 +95,7 @@ export const Poster = styled.img`
   width: 200px;
   margin: 1rem;
   height: auto;
+  cursor: pointer;
 `;
 export const Vote = styled.p`
   color: white;

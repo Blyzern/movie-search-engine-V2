@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getMovieData } from './store/topRatedSlice';
 import { dataSelector, isLoadingSelector } from './store/topRatedSelectors';
+import { setMovieId } from '../details/store/detailsSlice';
+import { push } from 'redux-first-history';
 import { isEmpty } from 'lodash';
 
 import {
@@ -29,6 +31,7 @@ import PulseLoader from 'react-spinners/PulseLoader';
 
 export const TopRatedFilms = () => {
   const data = useSelector(dataSelector);
+  const baseImgUrl = process.env.REACT_APP_IMG_URL;
   const isLoading = useSelector(isLoadingSelector);
   const dispatch = useDispatch();
 
@@ -53,7 +56,10 @@ export const TopRatedFilms = () => {
     }
   };
 
-  const baseImgUrl = process.env.REACT_APP_IMG_URL;
+  const goTo = (id) => {
+    dispatch(setMovieId(id));
+    dispatch(push(`/movie/${id}`));
+  };
 
   useEffect(() => {
     setFilms(data);
@@ -96,9 +102,10 @@ export const TopRatedFilms = () => {
         {films.map(({ poster_path, id, vote_average }) => (
           <FilmCard key={id}>
             <Poster
-              src={!isEmpty(poster_path) && baseImgUrl + poster_path}
+              src={(!isEmpty(poster_path) && baseImgUrl + poster_path) || null}
               key={id}
               alt="Poster"
+              onClick={() => goTo(id)}
             ></Poster>
             <Vote key={id + ' movie'}>Vote: {vote_average}</Vote>
           </FilmCard>

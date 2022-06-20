@@ -1,16 +1,18 @@
 import styled from 'styled-components';
 
 export const CloseButton = styled.button`
-  position: fixed;
+  position: absolute;
   text-weight: bold;
   color: black;
   width: 2rem;
   height: 2rem;
-  right: calc(25% - 4.4rem);
+  right: calc(0%);
   border-radius: 50%;
   width: 2rem;
   cursor: pointer;
   z-index: 100;
+  @media (max-width: 360px) {
+  }
 `;
 
 export const SearchForm = styled.form`
@@ -46,23 +48,32 @@ export const Label = styled.label`
 `;
 
 export const PopupWrapper = styled.div`
-  position: absolute;
-  top: 10%;
-  background-color: rgba(0, 0, 0, 0.5);
-  left: calc(50% + 2.7rem);
-  width: 30%;
-  height: 75vh;
+  position: fixed;
+  top: 5%;
+  left: 40%;
+  width: 400px;
+  height: fit-content;
   display: flex;
   justify-content: center;
   border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.5);
+  @media (max-width: 360px) {
+    left: 0;
+    width: 100%;
+  }
 `;
 
 export const PopupBox = styled.div`
   position: relative;
-  min-height: 300px;
+  width: 80%;
+  height: 300px;
+  display: flex;
+  justify-content: center;
   background-color: rgb(20, 20, 20);
   border-radius: 5px;
-  width: 80%;
   margin-bottom: 1rem;
   overflow: auto;
+  @media (max-width: 360px) {
+    width: 90%;
+  }
 `;
