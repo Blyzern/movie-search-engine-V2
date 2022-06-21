@@ -6,7 +6,7 @@ function* getFilms() {
   const endPoint = `/trending/movie/week`;
   try {
     yield put(setLoading(true));
-    const { data } = yield call(fetchMovies, endPoint, 'GET');
+    const { data } = yield call(fetchMovies, endPoint);
     yield put(setMoviesData(data.results));
     yield put(setLoading(false));
   } catch (error) {

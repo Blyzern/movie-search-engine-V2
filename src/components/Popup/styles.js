@@ -14,12 +14,34 @@ export const CloseButton = styled.button`
   @media (max-width: 360px) {
   }
 `;
+export const Results = styled.p`
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  color: white;
+  font-weight: bold;
+  align-self: center;
+  &:hover {
+    color: cyan;
+    cursor: pointer;
+  }
+`;
 
-export const SearchForm = styled.form`
+export const SearchWrapper = styled.div`
   width: 100%;
-  height: 100%;
+  height: fit-content;
   display: flex;
   flex-direction: column;
+`;
+export const SearchButton = styled.button`
+  width: 70%;
+  height: 1rem;
+  color: white;
+  border: none;
+  background-color: red;
+  align-self: center;
+  hover: {
+    background-color: darkred;
+  }
 `;
 
 export const Radio = styled.input`
