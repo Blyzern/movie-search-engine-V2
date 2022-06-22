@@ -26,20 +26,30 @@ export const Results = styled.p`
   }
 `;
 
-export const SearchWrapper = styled.div`
+export const Error = styled.p`
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  color: white;
+  font-weight: bold;
+  align-self: center;
+`;
+
+export const SearchWrapper = styled.form`
   width: 100%;
   height: fit-content;
   display: flex;
   flex-direction: column;
 `;
-export const SearchButton = styled.button`
+export const SearchButton = styled.input`
   width: 70%;
-  height: 1rem;
+  height: 2rem;
+  font-size: 1rem;
   color: white;
   border: none;
   background-color: red;
   align-self: center;
-  hover: {
+  &:hover {
+    cursor: pointer;
     background-color: darkred;
   }
 `;

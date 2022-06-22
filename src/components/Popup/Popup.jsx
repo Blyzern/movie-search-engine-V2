@@ -3,6 +3,24 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { popupDataSelector } from './store/popupSelectors';
 import { getData } from './store/popupSlice';
+import { push } from 'redux-first-history';
+import { setIsSerie, setMovieId } from '../../Pages/details/store/detailsSlice';
+import { isEmpty } from 'lodash';
+import { useForm } from 'react-hook-form';
+
+import {
+  CloseButton,
+  PopupWrapper,
+  PopupBox,
+  Radio,
+  SearchWrapper,
+  InputWrapper,
+  Label,
+  SearchBar,
+  SearchButton,
+  Results,
+  Error,
+} from './styles';
 
 const quickSort = (arr) => {
   const arrCopy = [...arr];
@@ -43,51 +61,48 @@ const quickSort = (arr) => {
   return arrCopy;
 };
 
-import {
-  CloseButton,
-  PopupWrapper,
-  PopupBox,
-  Radio,
-  SearchWrapper,
-  InputWrapper,
-  Label,
-  SearchBar,
-  SearchButton,
-  Results,
-} from './styles';
-import { isEmpty } from 'lodash';
-
-const linearSearch = (arr, input) => {
-  let arrCopy = [...arr];
-  let results = [];
-  arrCopy.map(({ title, id }, i) => {
-    if (title.includes(input)) {
-      results.push(title);
-    }
-  });
-  return results || 'Not Found';
+const linearSearch = (arr, x) => {
+  if (!isEmpty(x)) {
+    let arrCopy = [...arr];
+    let results = [];
+    let input = x.toLowerCase();
+    arrCopy.map(({ title }, i) => {
+      if (title.toLowerCase().includes(input)) {
+        results.push(arrCopy[i]);
+      }
+    });
+    return results;
+  }
+  return;
 };
 
 const binarySearch = (arr, x) => {
-  let arrCopy = [...arr];
-  let l = 0;
-  let r = arrCopy.length - 1;
-  let mid;
-  let results = [];
+  if (!isEmpty(x)) {
+    let arrCopy = [...arr];
+    let l = 0;
+    let r = arrCopy.length - 1;
+    let mid;
+    let results = [];
+    let input = x.toLowerCase();
 
-  while (l <= r) {
-    mid = l + Math.floor((r - l) / 2);
-    let res = arrCopy[mid].title.localeCompare(x);
+    while (l <= r) {
+      mid = Math.floor((r + l) / 2);
+      let { title } = arrCopy[mid];
+      let res = title.toLowerCase().localeCompare(input);
 
-    if (arrCopy[mid].title.includes(x)) {
-      results.push(arrCopy[mid].title);
+      if (title.toLowerCase().includes(input)) {
+        results.push(arrCopy[mid]);
+      }
+      res > 0 ? (l = mid + 1) : (r = mid - 1);
     }
-    res > 0 ? (r = mid + 1) : (l = mid + 1);
+    return results;
   }
-  return results || 'Not Found';
+  return;
 };
 
 export const Popup = ({ handle }) => {
+  const { register, handleSubmit, errors } = useForm();
+
   const dispatch = useDispatch();
   const data = useSelector(popupDataSelector);
   const { title } = data;
@@ -112,11 +127,17 @@ export const Popup = ({ handle }) => {
       : setSearchOutput(linearSearch(data, searchInput));
   };
 
+  const goTo = (id) => {
+    dispatch(setMovieId(id));
+    dispatch(setIsSerie(false));
+    dispatch(push(`/movie/${id}`));
+  };
+
   return (
     <PopupWrapper>
       <PopupBox>
         <CloseButton onClick={handle}>X</CloseButton>
-        <SearchWrapper>
+        <SearchWrapper onSubmit={handleSubmit((data) => {})}>
           <InputWrapper>
             <Radio
               type="radio"
@@ -137,16 +158,26 @@ export const Popup = ({ handle }) => {
           </InputWrapper>
           <InputWrapper>
             <SearchBar
+              {...register('searchBar')}
               type="text"
               placeholder="Search Film"
               onChange={(e) => setSearchInput(e.target.value)}
             />
           </InputWrapper>
-          <SearchButton onClick={() => handleSearch(searchType)}>
-            SEARCH
-          </SearchButton>
-          {!isEmpty(searchOutput) &&
-            searchOutput.map((item, i) => <Results key={i}>{item}</Results>)}
+          <SearchButton
+            type="submit"
+            value="Submit"
+            onClick={() => handleSearch(searchType)}
+          />
+          {!isEmpty(searchOutput) ? (
+            searchOutput.map(({ title, id }) => (
+              <Results key={id} onClick={() => goTo(id) && handle}>
+                {title}
+              </Results>
+            ))
+          ) : (
+            <Error>No results!</Error>
+          )}
         </SearchWrapper>
       </PopupBox>
     </PopupWrapper>

@@ -39,7 +39,7 @@ export const Details = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getMovieDetails(movieId));
-  }, []);
+  }, [movieId]);
 
   return isLoading ? (
     <LoaderContainer>
