@@ -21,6 +21,7 @@ import {
   Results,
   Error,
 } from './styles';
+import { useCallback } from 'react';
 
 const quickSort = (arr) => {
   const arrCopy = [...arr];
@@ -61,7 +62,7 @@ const quickSort = (arr) => {
   return arrCopy;
 };
 
-const linearSearch = (arr, x) => {
+const linearSearch = useCallback((arr, x) => {
   if (!isEmpty(x)) {
     let arrCopy = [...arr];
     let results = [];
@@ -74,7 +75,7 @@ const linearSearch = (arr, x) => {
     return results;
   }
   return;
-};
+});
 
 const binarySearch = (arr, x) => {
   if (!isEmpty(x)) {
