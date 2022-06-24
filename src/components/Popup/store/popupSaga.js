@@ -1,6 +1,7 @@
 import { takeLatest, put, all, call } from 'redux-saga/effects';
 import { getData, setLoading, setData } from './popupSlice';
 import { fetchMovies } from '../../../utils/FetchWrapper';
+import { setError } from '../../ErrorPopup/store/ErrorPopupSlice';
 
 function* fetchData() {
   const endPoint = '/trending/movie/week';
@@ -10,7 +11,7 @@ function* fetchData() {
     yield put(setData(data.results));
     yield put(setLoading(false));
   } catch (error) {
-    console.log(error);
+    yield put(setError(error));
   }
 }
 

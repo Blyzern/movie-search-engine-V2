@@ -3,6 +3,7 @@ import { fetchMovies } from '../../../utils/FetchWrapper';
 import { getMovieDetails } from './detailsSlice';
 import { setData, setLoading } from './detailsSlice';
 import { isSerieSelector, isLoadingSelector } from './detailsSelector';
+import { setError } from '../../../components/ErrorPopup/store/ErrorPopupSlice';
 
 function* getDetails({ payload }) {
   let endPoint;
@@ -16,7 +17,7 @@ function* getDetails({ payload }) {
     yield put(setData(data));
     yield put(setLoading(false));
   } catch (error) {
-    console.log(error);
+    yield put(setError(error));
   }
 }
 

@@ -33,7 +33,7 @@ export const Title = styled.h1`
 
 export const Poster = styled.img`
   width: 20rem;
-  height: auto;
+  height: fit-content;
   margin-bottom: 1rem;
   margin-right: 1rem;
   @media (max-width: ${768}px) {

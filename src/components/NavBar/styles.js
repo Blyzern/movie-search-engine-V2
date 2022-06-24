@@ -10,6 +10,7 @@ export const NavContainer = styled.header`
   text-align: center;
   width: 100%;
   height: 4.1 rem;
+  z-index: 100;
   @media (max-width: 460px) {
     overflow: hidden;
     overflow-x: scroll;

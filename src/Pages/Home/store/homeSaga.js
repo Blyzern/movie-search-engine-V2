@@ -1,6 +1,7 @@
 import { takeLatest, put, all, call } from 'redux-saga/effects';
 import { getMovies, setSeries, setLoading, setMovies } from './homeSlice';
 import { fetchMovies } from '../../../utils/FetchWrapper';
+import { setError } from '../../../components/ErrorPopup/store/ErrorPopupSlice';
 
 function* getSerie() {
   const endPoint = '/trending/tv/week';
@@ -13,7 +14,7 @@ function* getSerie() {
     yield put(setMovies(newData.data.results));
     yield put(setLoading(false));
   } catch (error) {
-    console.log(error);
+    yield put(setError(error));
   }
 }
 

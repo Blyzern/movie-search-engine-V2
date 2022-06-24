@@ -35,6 +35,9 @@ export const Details = () => {
     number_of_seasons,
     runtime,
     vote_average,
+    release_date,
+    production_companies = [],
+    production_countries = [],
   } = useSelector(dataSelector);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -61,6 +64,25 @@ export const Details = () => {
               ) || 'No genres'}
             </Info>
           }
+          {!isEmpty(release_date) && (
+            <Info>
+              <Index>Release Date: </Index> {release_date || 'No release date'}
+            </Info>
+          )}
+          <Info>
+            <Index>Production Companies: </Index>
+            {production_companies.map(
+              ({ name }, i) =>
+                name + (i !== production_companies.length - 1 ? ', ' : '. ')
+            ) || 'No production companies'}
+          </Info>
+          <Info>
+            <Index>Production Countries: </Index>
+            {production_countries.map(
+              ({ name }, i) =>
+                name + (i !== production_countries.length - 1 ? ', ' : '. ')
+            ) || 'No production countires'}
+          </Info>
           {!isEmpty(number_of_episodes) && (
             <Info>
               <Index>Number of Episodes: </Index> {number_of_episodes}

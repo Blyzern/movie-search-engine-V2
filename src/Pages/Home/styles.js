@@ -13,6 +13,7 @@ export const LoaderContainer = styled.div`
 
 export const PageContainer = styled.div`
   margin-top: 4rem;
+  margin-bottom: 4rem;
   flex-direction: column;
   justify-content: space-around;
   allign-items: center;

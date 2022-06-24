@@ -21,7 +21,6 @@ import {
   Results,
   Error,
 } from './styles';
-import { useCallback } from 'react';
 
 const quickSort = (arr) => {
   const arrCopy = [...arr];
@@ -172,7 +171,7 @@ export const Popup = ({ handle }) => {
           />
           {!isEmpty(searchOutput) ? (
             searchOutput.map(({ title, id }) => (
-              <Results key={id} onClick={() => goTo(id) && handle}>
+              <Results key={id} onClick={() => goTo(id)}>
                 {title}
               </Results>
             ))

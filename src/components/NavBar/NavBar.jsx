@@ -21,7 +21,7 @@ export const NavBar = () => {
           src="https://www.ecodelcinema.com/wp-content/uploads/2022/02/Netflix-logo.jpg"
           alt="Netflix logo"
         />
-        <PageLink linkRef="/Home" content="Home" />
+        <PageLink linkRef="/" content="Home" />
         <PageLink linkRef="/TopRatedFilms" content="Top Rated" />
       </Nav>
       <Nav2>
@@ -29,7 +29,7 @@ export const NavBar = () => {
           fill="white"
           width="50"
           height="50"
-          onClick={() => handlePopup(true)}
+          onClick={() => handlePopup()}
         />
         {showPopup && <Popup handle={handlePopup} />}
         <PageLink linkRef="/" content="Register" />

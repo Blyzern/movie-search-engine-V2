@@ -11,7 +11,7 @@ export const CloseButton = styled.button`
   width: 2rem;
   cursor: pointer;
   z-index: 100;
-  @media (max-width: 360px) {
+  @media (max-width: 420px) {
   }
 `;
 export const Results = styled.p`
@@ -89,7 +89,7 @@ export const PopupWrapper = styled.div`
   justify-content: center;
   border-radius: 5px;
   background-color: rgba(0, 0, 0, 0.5);
-  @media (max-width: 360px) {
+  @media (max-width: 420px) {
     left: 0;
     width: 100%;
   }
@@ -105,7 +105,7 @@ export const PopupBox = styled.div`
   border-radius: 5px;
   margin-bottom: 1rem;
   overflow: auto;
-  @media (max-width: 360px) {
+  @media (max-width: 420px) {
     width: 90%;
   }
 `;
