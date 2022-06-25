@@ -4,7 +4,7 @@ import './App.css';
 import { Home } from './Pages/Home';
 import { Details } from './Pages/details';
 import { TopRatedFilms } from './Pages/topRatedFilms';
-import { Wrapper } from './components/Wrapper/styles';
+import { Wrapper } from './components/wrapper/styles';
 import { NavBar } from './components/NavBar';
 import { ErrorPopup } from './components/ErrorPopup';
 

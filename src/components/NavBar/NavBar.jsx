@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Nav, Nav2, ProfileImg, Logo, NavContainer, Lens } from './styles';
-import { Popup } from '../Popup';
+import { SearchPopup } from '../SearchPopup';
 import { PageLink } from '../PageLink';
 import { useEffect } from 'react';
 import SvgLens from '../../Images/Lens';
@@ -31,7 +31,7 @@ export const NavBar = () => {
           height="50"
           onClick={() => handlePopup()}
         />
-        {showPopup && <Popup handle={handlePopup} />}
+        {showPopup && <SearchPopup handle={handlePopup} />}
         <PageLink linkRef="/" content="Register" />
         <ProfileImg
           src="https://www.workforcesolutionsalamo.org/wp-content/uploads/2021/04/board-member-missing-image.png"

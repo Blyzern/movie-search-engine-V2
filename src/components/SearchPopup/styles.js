@@ -34,6 +34,13 @@ export const Error = styled.p`
   align-self: center;
 `;
 
+export const FormError = styled.p`
+  margin-top: 1rem;
+  color: red;
+  font-weight: bold;
+  align-self: center;
+`;
+
 export const SearchWrapper = styled.form`
   width: 100%;
   height: fit-content;

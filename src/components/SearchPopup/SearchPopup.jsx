@@ -7,6 +7,7 @@ import { push } from 'redux-first-history';
 import { setIsSerie, setMovieId } from '../../Pages/details/store/detailsSlice';
 import { isEmpty } from 'lodash';
 import { useForm } from 'react-hook-form';
+import { linearSearch, binarySearch } from '../../utils/SearchType';
 
 import {
   CloseButton,
@@ -20,6 +21,7 @@ import {
   SearchButton,
   Results,
   Error,
+  FormError,
 } from './styles';
 
 const quickSort = (arr) => {
@@ -61,47 +63,16 @@ const quickSort = (arr) => {
   return arrCopy;
 };
 
-const linearSearch = (arr, x) => {
-  if (!isEmpty(x)) {
-    let arrCopy = [...arr];
-    let results = [];
-    let input = x.toLowerCase();
-    arrCopy.map(({ title }, i) => {
-      if (title.toLowerCase().includes(input)) {
-        results.push(arrCopy[i]);
-      }
-    });
-    return results;
-  }
-  return;
-};
-
-const binarySearch = (arr, x) => {
-  if (!isEmpty(x)) {
-    let arrCopy = [...arr];
-    let l = 0;
-    let r = arrCopy.length - 1;
-    let mid;
-    let results = [];
-    let input = x.toLowerCase();
-
-    while (l <= r) {
-      mid = Math.floor((r + l) / 2);
-      let { title } = arrCopy[mid];
-      let res = title.toLowerCase().localeCompare(input);
-
-      if (title.toLowerCase().includes(input)) {
-        results.push(arrCopy[mid]);
-      }
-      res > 0 ? (r = mid - 1) : (l = mid + 1);
-    }
-    return results;
-  }
-  return;
-};
-
-export const Popup = ({ handle }) => {
-  const { register, handleSubmit, errors } = useForm();
+export const SearchPopup = ({ handle }) => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      searchBar: '',
+    },
+  });
 
   const dispatch = useDispatch();
   const data = useSelector(popupDataSelector);
@@ -157,8 +128,16 @@ export const Popup = ({ handle }) => {
             <Label>Binary Search</Label>
           </InputWrapper>
           <InputWrapper>
+            <FormError>{errors.searchBar?.message}</FormError>
             <SearchBar
-              {...register('searchBar')}
+              {...register('searchBar', {
+                required: 'This field is required',
+                maxLength: {
+                  value: 5,
+                  message: "You can't type more than 500 characters",
+                },
+              })}
+              maxLength="5"
               type="text"
               placeholder="Search Film"
               onChange={(e) => setSearchInput(e.target.value)}
