@@ -133,11 +133,11 @@ export const SearchPopup = ({ handle }) => {
               {...register('searchBar', {
                 required: 'This field is required',
                 maxLength: {
-                  value: 5,
+                  value: 500,
                   message: "You can't type more than 500 characters",
                 },
               })}
-              maxLength="5"
+              maxLength="501"
               type="text"
               placeholder="Search Film"
               onChange={(e) => setSearchInput(e.target.value)}
