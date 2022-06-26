@@ -1,18 +1,25 @@
 import React, { useState } from 'react';
-import { Nav, Nav2, ProfileImg, Logo, NavContainer, Lens } from './styles';
+import { Nav, Nav2, Logo, NavContainer } from './styles';
 import { SearchPopup } from '../SearchPopup';
 import { PageLink } from '../PageLink';
 import { useEffect } from 'react';
+import { pathnameSelector } from '../../Pages/Home/store/homeSelectors';
 import SvgLens from '../../Images/Lens';
+import { useSelector } from 'react-redux';
+
+const homelink = '/';
 
 export const NavBar = () => {
   const [showPopup, setShowPopup] = useState(false);
+  const pathname = useSelector(pathnameSelector);
 
   const handlePopup = () => {
     setShowPopup(!showPopup);
   };
 
   useEffect(() => {}, [showPopup]);
+
+  const isCurrentPage = (href) => href === pathname;
 
   return (
     <NavContainer key={'NavBar'}>
@@ -21,8 +28,13 @@ export const NavBar = () => {
           src="https://www.ecodelcinema.com/wp-content/uploads/2022/02/Netflix-logo.jpg"
           alt="Netflix logo"
         />
-        <PageLink linkRef="/" content="Home" />
-        <PageLink linkRef="/TopRatedFilms" content="Top Rated" />
+        <PageLink
+          linkRef={homelink}
+          content="Home"
+          selected={() => isCurrentPage(homelink)}
+        />
+        <PageLink linkRef="/TopRatedFilms" content="Top Rated" />{' '}
+        {/*Da sistemare*/}
       </Nav>
       <Nav2>
         <SvgLens
@@ -31,12 +43,9 @@ export const NavBar = () => {
           height="50"
           onClick={() => handlePopup()}
         />
-        {showPopup && <SearchPopup handle={handlePopup} />}
-        <PageLink linkRef="/" content="Register" />
-        <ProfileImg
-          src="https://www.workforcesolutionsalamo.org/wp-content/uploads/2021/04/board-member-missing-image.png"
-          alt="Profile Img"
-        />
+        {showPopup && (
+          <SearchPopup handle={handlePopup} setShowPopup={setShowPopup} />
+        )}
       </Nav2>
     </NavContainer>
   );

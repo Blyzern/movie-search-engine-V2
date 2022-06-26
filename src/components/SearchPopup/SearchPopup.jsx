@@ -63,7 +63,7 @@ const quickSort = (arr) => {
   return arrCopy;
 };
 
-export const SearchPopup = ({ handle }) => {
+export const SearchPopup = ({ handle, setShowPopup }) => {
   const {
     register,
     handleSubmit,
@@ -92,8 +92,8 @@ export const SearchPopup = ({ handle }) => {
     }
   }, [data]);
 
-  const handleSearch = (type) => {
-    type
+  const handleSearch = () => {
+    searchType
       ? setSearchOutput(binarySearch(sortedData, searchInput))
       : setSearchOutput(linearSearch(data, searchInput));
   };
@@ -102,6 +102,7 @@ export const SearchPopup = ({ handle }) => {
     dispatch(setMovieId(id));
     dispatch(setIsSerie(false));
     dispatch(push(`/movie/${id}`));
+    setShowPopup(false);
   };
 
   return (
@@ -143,11 +144,7 @@ export const SearchPopup = ({ handle }) => {
               onChange={(e) => setSearchInput(e.target.value)}
             />
           </InputWrapper>
-          <SearchButton
-            type="submit"
-            value="Submit"
-            onClick={() => handleSearch(searchType)}
-          />
+          <SearchButton type="submit" value="Submit" onClick={handleSearch} />
           {!isEmpty(searchOutput) ? (
             searchOutput.map(({ title, id }) => (
               <Results key={id} onClick={() => goTo(id)}>

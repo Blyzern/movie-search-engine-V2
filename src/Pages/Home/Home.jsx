@@ -17,6 +17,7 @@ import { setIsSerie, setMovieId } from '../details/store/detailsSlice';
 import { fetchPoster } from '../../utils/FetchPoster';
 import { loadingSelector } from './store/homeSelectors';
 import PulseLoader from 'react-spinners/PulseLoader';
+import { nanoid } from '@reduxjs/toolkit';
 
 export const Home = () => {
   const series = useSelector((state) => state.home.series);
@@ -50,7 +51,7 @@ export const Home = () => {
           {series.map(({ id, poster_path }) => (
             <FilmCover
               src={(!isEmpty(poster_path) && fetchPoster(poster_path)) || null}
-              key={id}
+              key={id + nanoid()}
               onClick={() => goToSerie(id)}
             />
           ))}
@@ -62,7 +63,7 @@ export const Home = () => {
           {films.map(({ id, poster_path }) => (
             <FilmCover
               src={(!isEmpty(poster_path) && fetchPoster(poster_path)) || null}
-              key={id}
+              key={id + nanoid()}
               onClick={() => goTo(id)}
             />
           ))}
