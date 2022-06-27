@@ -1,11 +1,11 @@
 import axios from 'axios';
 
-export const fetchMovies = (endpoint) => {
-  return axios.request({
-    method: 'get',
-    url:
+export const fetchMovies = async (endpoint) => {
+  try {
+    return axios.get(
       `${process.env.REACT_APP_BASE_URL}` +
-      endpoint +
-      `${process.env.REACT_APP_API_KEY}`,
-  });
+        endpoint +
+        `${process.env.REACT_APP_API_KEY}`
+    );
+  } catch (error) {}
 };

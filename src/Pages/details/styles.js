@@ -14,8 +14,9 @@ export const LoaderContainer = styled.div`
 `;
 
 export const PageWrapper = styled.div`
-  margin-top: 2rem;
+  margin-top: 3rem;
   margin-left: 2rem;
+  flexwrap: wrap;
   flex-direction: column;
   justify-content: space-around;
 `;

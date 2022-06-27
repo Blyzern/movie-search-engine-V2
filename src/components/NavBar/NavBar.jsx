@@ -7,7 +7,8 @@ import { pathnameSelector } from '../../Pages/Home/store/homeSelectors';
 import SvgLens from '../../Images/Lens';
 import { useSelector } from 'react-redux';
 
-const homelink = '/';
+const homeLink = '/';
+const topRatedLink = '/TopRatedFilms';
 
 export const NavBar = () => {
   const [showPopup, setShowPopup] = useState(false);
@@ -29,11 +30,15 @@ export const NavBar = () => {
           alt="Netflix logo"
         />
         <PageLink
-          linkRef={homelink}
+          linkRef={homeLink}
           content="Home"
-          selected={() => isCurrentPage(homelink)}
+          selected={isCurrentPage(homeLink)}
         />
-        <PageLink linkRef="/TopRatedFilms" content="Top Rated" />{' '}
+        <PageLink
+          linkRef={topRatedLink}
+          content="Top Rated"
+          selected={isCurrentPage(topRatedLink)}
+        />{' '}
         {/*Da sistemare*/}
       </Nav>
       <Nav2>

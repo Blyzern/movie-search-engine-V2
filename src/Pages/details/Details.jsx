@@ -53,7 +53,9 @@ export const Details = () => {
     <PageWrapper>
       {<Title>{title || name}</Title>}
       <DetailsWrapper>
-        {<Poster src={fetchPoster(poster_path) || 'none'} alt="Film Poster" />}
+        {!isEmpty(poster_path) && (
+          <Poster src={fetchPoster(poster_path) || 'none'} alt="Film Poster" />
+        )}
         <InfoWrapper>
           {
             <Info>

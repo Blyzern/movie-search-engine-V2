@@ -28,6 +28,7 @@ import {
 } from '../../utils/Sorting';
 
 import PulseLoader from 'react-spinners/PulseLoader';
+import { nanoid } from '@reduxjs/toolkit';
 
 export const TopRatedFilms = () => {
   const data = useSelector(dataSelector);
@@ -100,14 +101,14 @@ export const TopRatedFilms = () => {
       </DropdownWrapper>
       <FilmsWrapper>
         {films.map(({ poster_path, id, vote_average }) => (
-          <FilmCard key={id}>
+          <FilmCard key={id + nanoid()}>
             <Poster
               src={(!isEmpty(poster_path) && baseImgUrl + poster_path) || null}
-              key={id}
+              key={id + nanoid()}
               alt="Poster"
               onClick={() => goTo(id)}
             ></Poster>
-            <Vote key={id + ' movie'}>Vote: {vote_average}</Vote>
+            <Vote key={id}>Vote: {vote_average}</Vote>
           </FilmCard>
         ))}
       </FilmsWrapper>

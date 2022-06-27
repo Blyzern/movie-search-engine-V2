@@ -133,6 +133,10 @@ export const SearchPopup = ({ handle, setShowPopup }) => {
             <SearchBar
               {...register('searchBar', {
                 required: 'This field is required',
+                minLength: {
+                  value: 1,
+                  message: 'Search must be at least 1 character',
+                },
                 maxLength: {
                   value: 500,
                   message: "You can't type more than 500 characters",

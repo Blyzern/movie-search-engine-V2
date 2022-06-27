@@ -28,6 +28,7 @@ export const BannerContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
   margin-bottom: 1rem;
+  margin-right: 3rem;
   padding-bottom: 1rem;
 `;
 

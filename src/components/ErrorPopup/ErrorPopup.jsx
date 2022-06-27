@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { getError, setOpen } from './store/ErrorPopupSlice';
 import {
   ErrorPopupBox,
@@ -16,9 +16,8 @@ import { useDispatch, useSelector } from 'react-redux';
 export const ErrorPopup = () => {
   const dispatch = useDispatch();
   const error = useSelector(getErrorSelector);
-  const errorTxt = String(error);
   const isOpen = useSelector(getisOpenSelector);
-
+  let errorTxt = String(error);
   useEffect(() => {
     error && dispatch(getError());
   }, [error]);
@@ -32,9 +31,7 @@ export const ErrorPopup = () => {
     error && (
       <ErrorPopupWrapper>
         <CloseButton onClick={handleWindow}>X</CloseButton>
-        <ErrorPopupBox>
-          <ErrorTxt>{errorTxt}</ErrorTxt>
-        </ErrorPopupBox>
+        <ErrorPopupBox>{<ErrorTxt>{errorTxt}</ErrorTxt>}</ErrorPopupBox>
       </ErrorPopupWrapper>
     )
   );
