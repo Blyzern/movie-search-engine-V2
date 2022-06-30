@@ -2,13 +2,14 @@ import styled from 'styled-components';
 
 export const ErrorPopupWrapper = styled.div`
   margin-top: 2.4rem;
-  position: fixed;
+  position: absolute;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 100%;
+  z-index: 10;
   background-color: rgba(0, 0, 0, 0.5);
 `;
 export const ErrorPopupBox = styled.div`

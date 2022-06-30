@@ -11,7 +11,6 @@ function* getFilms() {
     yield put(setMoviesData(data.results));
     yield put(setLoading(false));
   } catch (error) {
-    console.log(error);
     yield put(setError(error));
   }
 }

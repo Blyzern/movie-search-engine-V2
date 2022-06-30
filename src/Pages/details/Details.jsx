@@ -108,8 +108,6 @@ export const Details = () => {
           <Info>
             <Index>INFO:</Index> {overview || 'No info'}
           </Info>
-
-          <Riproduce>Riproduce</Riproduce>
         </InfoWrapper>
       </DetailsWrapper>
     </PageWrapper>

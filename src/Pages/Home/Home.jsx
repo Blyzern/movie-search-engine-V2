@@ -33,7 +33,7 @@ export const Home = () => {
   const goToSerie = (id) => {
     dispatch(setMovieId(id));
     dispatch(setIsSerie(true));
-    dispatch(push(`/serie/${id}`));
+    dispatch(push(`/tv/${id}`));
   };
   useEffect(() => {
     dispatch(getMovies());

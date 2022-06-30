@@ -16,6 +16,7 @@ export const LoaderContainer = styled.div`
 export const PageWrapper = styled.div`
   margin-top: 3rem;
   margin-left: 2rem;
+  margin-bottom: 3rem;
   flexwrap: wrap;
   flex-direction: column;
   justify-content: space-around;
@@ -45,20 +46,6 @@ export const Poster = styled.img`
     align-self: center;
     width: 12rem;
     height: auto;
-  }
-`;
-export const Riproduce = styled.button`
-  background-color: red;
-  color: white;
-  font-size: 1.5rem;
-  border: none;
-  border-radius: 5px;
-  align-self: center;
-  cursor: pointer;
-  width: 15rem;
-  height: 3rem;
-  :hover {
-    background-color: darkred;
   }
 `;
 
