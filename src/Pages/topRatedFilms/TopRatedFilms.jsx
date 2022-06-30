@@ -5,6 +5,7 @@ import { dataSelector, isLoadingSelector } from './store/topRatedSelectors';
 import { setMovieId } from '../details/store/detailsSlice';
 import { push } from 'redux-first-history';
 import { isEmpty } from 'lodash';
+import { SelectPopup } from '../../components/SelectPopup';
 
 import {
   PageWrapper,
@@ -40,17 +41,17 @@ export const TopRatedFilms = () => {
 
   const changeHandler = (value, arrData) => {
     switch (value) {
-      case 'Select Sort':
+      case 'Reset':
         return setFilms(arrData);
-      case 'bubbleSort':
+      case 'Bubble Sort':
         return setFilms(bubbleSort(arrData));
-      case 'insertionSort':
+      case 'Insertion Sort':
         return setFilms(insertionSort(arrData));
-      case 'selectionSort':
+      case 'Selection Sort':
         return setFilms(selectionSort(arrData));
-      case 'mergeSort':
+      case 'Merge Sort':
         return setFilms(mergeSort(arrData));
-      case 'quickSort':
+      case 'Quick Sort':
         return setFilms(quickSort(arrData));
       default:
         return console.log('error');
@@ -78,26 +79,7 @@ export const TopRatedFilms = () => {
   ) : (
     <PageWrapper>
       <DropdownWrapper>
-        <Dropdown onChange={(e) => changeHandler(e.target.value, data)}>
-          <DropdownOption defaultValue="Select Sort" key="default">
-            Select Sort
-          </DropdownOption>
-          <DropdownOption value="bubbleSort" key="bubbleSort">
-            Bubble Sort
-          </DropdownOption>
-          <DropdownOption value="insertionSort" key="insertionSort">
-            Insertion Sort
-          </DropdownOption>
-          <DropdownOption value="selectionSort" key="selectionSort">
-            Selection Sort
-          </DropdownOption>
-          <DropdownOption value="mergeSort" key="mergeSort">
-            Merge Sort
-          </DropdownOption>
-          <DropdownOption value="quickSort" key="quickSort">
-            Quick Sort
-          </DropdownOption>
-        </Dropdown>
+        <SelectPopup handler={changeHandler} Arr={data} />
       </DropdownWrapper>
       <FilmsWrapper>
         {films.map(({ poster_path, id, vote_average }) => (
