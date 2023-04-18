@@ -34,6 +34,7 @@ export const BannerContainer = styled.div`
 
 export const Banner = styled.div`
   width: 100%;
+  height: fit-content;
   display: flex;
   margin-left: 1.8rem;
   margin-right: 1.8rem;
@@ -64,5 +65,9 @@ export const FilmCover = styled.img`
   margin-right: 0.3rem;
   @media (max-width: ${smartPhone}px) {
     width: 11.7 rem;
+  }
+  &:hover {
+    transform: scale(1.3);
+    transition: 0.3s;
   }
 `;
