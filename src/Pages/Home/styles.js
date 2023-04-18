@@ -34,7 +34,7 @@ export const BannerContainer = styled.div`
 
 export const Banner = styled.div`
   width: 100%;
-  height: fit-content;
+  height: 20rem;
   display: flex;
   margin-left: 1.8rem;
   margin-right: 1.8rem;
@@ -67,7 +67,9 @@ export const FilmCover = styled.img`
     width: 11.7 rem;
   }
   &:hover {
-    transform: scale(1.3);
+    transform: scale(1.1);
     transition: 0.3s;
+    box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.3);
+    margin-left: 0.3rem;
   }
 `;
