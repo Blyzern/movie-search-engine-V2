@@ -16,14 +16,14 @@ const { createReduxHistory, routerMiddleware, routerReducer } =
 const sagaMiddleware = createSagaMiddleware();
 
 export const store = configureStore({
-  reducer: {
+  reducer: combineReducers({
     home: homeReducer,
     description: descriptionReducer,
     topRated: topRatedReducer,
     router: routerReducer,
     popup: popupReducer,
     error: errorReducer,
-  },
+  }),
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({ thunk: false })
       .concat(sagaMiddleware)
