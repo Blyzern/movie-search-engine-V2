@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { popupDataSelector } from './store/popupSelectors';
-import { getData } from './store/popupSlice';
-import { push } from 'redux-first-history';
-import { setIsSerie, setMovieId } from '../../Pages/details/store/detailsSlice';
-import { isEmpty } from 'lodash';
-import { useForm } from 'react-hook-form';
-import { linearSearch, binarySearch } from '../../utils/SearchType';
+import React, { useState } from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { popupDataSelector } from "./store/popupSelectors";
+import { getData } from "./store/popupSlice";
+import { push } from "redux-first-history";
+import { setIsSerie, setMovieId } from "../../Pages/details/store/detailsSlice";
+import { isEmpty } from "lodash";
+import { useForm } from "react-hook-form";
+import { linearSearch, binarySearch } from "../../utils/SearchType";
 
 import {
   CloseButton,
@@ -22,7 +22,7 @@ import {
   Results,
   Error,
   FormError,
-} from './styles';
+} from "./styles";
 
 const quickSort = (arr) => {
   const arrCopy = [...arr];
@@ -70,7 +70,7 @@ export const SearchPopup = ({ handle, setShowPopup }) => {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      searchBar: '',
+      searchBar: "",
     },
   });
 
@@ -79,7 +79,7 @@ export const SearchPopup = ({ handle, setShowPopup }) => {
   const { title } = data;
 
   const [sortedData, setSortedData] = useState([]);
-  const [searchInput, setSearchInput] = useState('');
+  const [searchInput, setSearchInput] = useState("");
   const [searchOutput = [], setSearchOutput] = useState([]);
   const [searchType, setSearchType] = useState(false);
 
@@ -131,11 +131,11 @@ export const SearchPopup = ({ handle, setShowPopup }) => {
           <InputWrapper>
             <FormError>{errors.searchBar?.message}</FormError>
             <SearchBar
-              {...register('searchBar', {
-                required: 'This field is required',
+              {...register("searchBar", {
+                required: "This field is required",
                 minLength: {
                   value: 1,
-                  message: 'Search must be at least 1 character',
+                  message: "Search must be at least 1 character",
                 },
                 maxLength: {
                   value: 500,

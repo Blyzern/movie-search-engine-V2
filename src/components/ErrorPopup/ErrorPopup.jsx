@@ -1,17 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import { getError, setOpen } from './store/ErrorPopupSlice';
+import React from "react";
+import { getError, setOpen } from "./store/ErrorPopupSlice";
+import { useEffect } from "react";
 import {
   ErrorPopupBox,
   ErrorPopupWrapper,
   ErrorTxt,
   CloseButton,
-} from './styles';
-import { isEmpty } from 'lodash';
+} from "./styles";
+import { isEmpty } from "lodash";
 import {
   getErrorSelector,
   getisOpenSelector,
-} from './store/ErrorPopupSelectors';
-import { useDispatch, useSelector } from 'react-redux';
+} from "./store/ErrorPopupSelectors";
+import { useDispatch, useSelector } from "react-redux";
 
 export const ErrorPopup = () => {
   const dispatch = useDispatch();
